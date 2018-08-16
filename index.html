@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h5>你的账户余额是：<span id="amount">&&&amount&&&</span></h5>
+    <!-- <form action="/pay" method="post" target="result">
+        <input type="submit" value="付款">
+    </form> -->
+
+    <!-- <iframe name="result" src="about:blank" frameborder="1" height="200px"></iframe> -->
+    <button id="button">付款1块钱</button>
+    <script>
+
+
+        button.addEventListener('click',(e)=>{
+            // let n = amount.innerText // n 的类型是？？？？
+            // let number = n - 0 // 将字符串转换为数字
+            // let newNumber = n - 1
+            // amount.innerText = newNumber
+
+            // let image = document.createElement('img')
+            // image.src = '/pay'
+            // image.onload = function(){
+            //     alert('success')
+            //     window.location.reload()
+            // }
+            // image.onerror = function(){
+            //     alert('fail')
+            // }
+            let functionName = 'xxx' + parseInt(Math.random() * 1000000,10)
+            window[functionName] = function(result){
+                if(result === 'success'){
+                    alert("付款成功")
+                    // window.location.reload()
+                    amount.innerText = amount.innerText - 1
+                }else{
+                    alert("付款失败")
+                }
+            }
+
+            let script = document.createElement('script')
+            script.src = 'http://jack.com:8002/pay?callback=' + functionName
+            document.body.appendChild(script)
+            script.onload = function(e){
+                // alert('success')
+                // window.location.reload()
+                e.currentTarget.remove()
+            }
+            script.onerror = function(e){
+                alert('fail')
+                e.currentTarget.remove()
+            }
+        })
+    </script>
+    <script src="./main.js"></script>
+</body>
+</html>

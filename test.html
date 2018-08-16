@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h5>你的账户余额是：<span id="amount">&&&amount&&&</span></h5>
+    <button id="button">付款1块钱</button>
+    <script>
+        button.addEventListener('click',(e)=>{
+            $.ajax({
+                url:"http://jack.com:8002/pay",
+                dataType:"jsonp",
+                success:function(response){
+                    if(response === 'success'){
+                        amount.innerText = amount.innerText - 1
+                    }
+                }
+            })
+        })
+
+    </script>
+    
+    <script>
+
+else if(path === '/pay'){
+    var amount = fs.readFileSync('./db','utf8')
+    var newAmount = amount - 1
+
+    fs.writeFileSync('./db', newAmount)
+    response.setHeader('Content-Type','application/javascript')
+    response.statusCode = 200
+    response.write(`
+    alert("付款成功")
+    // window.location.reload()
+    amount.innerText = amount.innerText - 1
+    `)
+    response.end()
+}
+
+
+window.xxx = function(){
+    alert("付款成功")
+    // window.location.reload()
+    amount.innerText = amount.innerText - 1
+}
+
+response.write(`
+xxx.call(undefined,'success')
+`)
+
+
+window.xxx = function(result){
+    if(result === 'success'){
+        alert("付款成功")
+        // window.location.reload()
+        amount.innerText = amount.innerText - 1
+    }else{
+        alert("付款失败")
+    }
+}
+
+
+    <h5>你的账户余额是：<span id="amount">&&&amount&&&</span></h5>
+    <button id="button">付款1块钱</button>
+    $.ajax({
+        url:"http://jack.com:8002/pay",
+        dataType:"jsonp",
+        success:function(response){
+            if(response === 'success'){
+                amount.innerText = amount.innerText - 1
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>
